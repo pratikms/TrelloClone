@@ -35,6 +35,14 @@ export class BoardComponent implements OnInit {
       .subscribe(boards => this.boards = boards);
   }
 
-  //add()
+  add(name: string): void {
+    //alert("clicked: " + name);
+    name = name.trim();
+    if (!name) { return; }
+
+    this.boardService.addBoard({ name } as Board, this.boards)
+      .subscribe(boards => this.boards = boards);
+
+  }
 
 }

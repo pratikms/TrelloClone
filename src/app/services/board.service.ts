@@ -14,4 +14,9 @@ export class BoardService {
     return of(BOARDS);
   }
 
+  addBoard(board: Board, boards: Board[]): Observable<Board[]> {
+    boards.push(board);
+    return of(boards);
+  }
+
 }

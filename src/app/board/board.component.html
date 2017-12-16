@@ -1,0 +1,20 @@
+<h1 (click)="toggleAddBoard()" *ngIf=createBoard>Create new board...</h1>
+
+<div *ngIf=addBoard>
+  <label>Hero name:
+    <input #boardName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(boardName.value); boardName.value=''">
+    Add
+  </button>
+  <button (click)="toggleAddBoard()">
+    Cancel
+  </button>
+</div>
+
+<ul>
+  <li *ngFor="let board of boards">
+    <span>{{ board.id }}</span> {{ board.name }}
+  </li>
+</ul>

@@ -29,20 +29,22 @@ export class BoardComponent implements OnInit {
   }
 
   getBoards(): void {
-    //this.boards = this.boardService.getBoards();
-
     this.boardService.getBoards()
       .subscribe(boards => this.boards = boards);
   }
 
   add(name: string): void {
-    //alert("clicked: " + name);
     name = name.trim();
     if (!name) { return; }
+    this.boardService.addBoard({ name } as Board)
+      .subscribe(board => {
+        this.boards.push(board);
+      });
+  }
 
-    this.boardService.addBoard({ name } as Board, this.boards)
-      .subscribe(boards => this.boards = boards);
-
+  delete(board: Board): void {
+    this.boards = this.boards.filter(b => b !== board);
+    this.boardService.deleteBoard(board).subscribe();
   }
 
 }

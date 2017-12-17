@@ -15,6 +15,11 @@
 
 <ul>
   <li *ngFor="let board of boards">
-    <span>{{ board.id }}</span> {{ board.name }}
+    <a routerLink="/board/{{ board.id }}">
+      <span>{{ board.id }}</span> {{ board.name }}
+    </a>
+    <button title="Delete Board" (click)="delete(board)">x</button>
   </li>
 </ul>
+
+<app-board-detail></app-board-detail>
